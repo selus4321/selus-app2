@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selus - Grade 12 Exam Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="preloader" class="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h2>Selus</h2>
+            </div>
+            <div class="preloader-spinner">
+                <div class="spinner"></div>
+            </div>
+            <p class="preloader-text">Loading your exam preparation...</p>
+            <div class="preloader-progress">
+                <div class="progress-bar-container">
+                    <div class="progress-fill" id="preloader-progress"></div>
+                </div>
+                <span class="progress-text" id="preloader-percent">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <header id="mainHeader" class="main-header" style="display: none;">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Selus</span>
+                </div>
+                <div class="header-profile">
+                    <img src="" id="headerProfileImg" class="profile-img-small" alt="Profile">
+                    <span id="headerProfileName">Student</span>
+                </div>
+                <nav class="header-nav">
+                    <button class="nav-btn" onclick="showAnalytics()">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </button>
+                    <button class="nav-btn" onclick="showHistory()">
+                        <i class="fas fa-history"></i>
+                        <span>History</span>
+                    </button>
+                    <button class="nav-btn" onclick="showSettings()">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="registrationScreen" class="screen active">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-header">
+                    <div class="signup-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h1>Welcome to Selus</h1>
+                    </div>
+                    <p>Join thousands of Grade 12 students preparing for their exams</p>
+                </div>
+
+                <div class="signup-form-container">
+                    <form id="registrationForm" class="signup-form">
+                        <h2>Create Your Account</h2>
+                        
+                        <div class="form-group">
+                            <label for="firstName">
+                                <i class="fas fa-user"></i>
+                                First Name
+                            </label>
+                            <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phoneNumber">
+                                <i class="fas fa-phone"></i>
+                                Phone Number
+                            </label>
+                            <input type="tel" id="phoneNumber" name="phoneNumber" required placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="schoolName">
+                                <i class="fas fa-school"></i>
+                                School Name
+                            </label>
+                            <input type="text" id="schoolName" name="schoolName" required placeholder="Enter your school name">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary signup-btn">
+                            <i class="fas fa-rocket"></i>
+                            Start Learning
+                        </button>
+                    </form>
+
+                    <div class="signup-features">
+                        <h3>What you'll get:</h3>
+                        <ul class="features-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Comprehensive Grade 12 practice questions</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Subject-wise practice from 2013-2017</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Progress tracking and performance analytics</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Timed practice with 1-hour countdown</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span>Score tracking and appreciation system</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="streamScreen" class="screen">
+        <div class="container">
+            <div class="hero">
+                <div class="welcome-message">
+                    <h1>Welcome back, <span id="welcome-name">Student</span>! 👋</h1>
+                    <p>Choose your stream to get started</p>
+                </div>
+                
+                <div class="stream-categories">
+                    <div class="category-card" id="socialStream">
+                        <div class="category-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Social Stream</h3>
+                        <p>History, Geography, Economics, and Social Studies</p>
+                        <div class="category-stats">
+                            <span class="difficulty medium">Coming Soon</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" id="naturalStream">
+                        <div class="category-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3>Natural Stream</h3>
+                        <p>Mathematics, Physics, Chemistry, Biology, and SAT</p>
+                        <div class="category-stats">
+                            <span class="difficulty easy">Available</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="comingSoonOverlay" class="overlay">
+        <div class="overlay-content">
+            <div class="overlay-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h2>Coming Soon</h2>
+            <p>Social stream content is being prepared for you</p>
+            <button class="btn btn-secondary" onclick="closeOverlay()">
+                <i class="fas fa-arrow-left"></i>
+                Go Back
+            </button>
+        </div>
+    </div>
+
+    <section id="subjectScreen" class="screen">
+        <div class="container">
+            <div class="hero">
+                <div class="welcome-message">
+                    <h1>Select Your Subject</h1>
+                    <p>Choose a subject to start practicing</p>
+                </div>
+                
+                <div class="quiz-categories">
+                    <div class="category-card" data-subject="MATHS">
+                        <div class="category-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Mathematics</h3>
+                        <p>Algebra, Geometry, Statistics, and Problem Solving</p>
+                        <div class="category-stats">
+                            <span class="question-count">100 Questions</span>
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-subject="BIOLOGY">
+                        <div class="category-icon">
+                            <i class="fas fa-dna"></i>
+                        </div>
+                        <h3>Biology</h3>
+                        <p>Cell Biology, Genetics, Ecology, and Human Systems</p>
+                        <div class="category-stats">
+                            <span class="question-count">100 Questions</span>
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-subject="CHEMISTRY">
+                        <div class="category-icon">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                        <h3>Chemistry</h3>
+                        <p>Organic, Inorganic, Physical, and Analytical Chemistry</p>
+                        <div class="category-stats">
+                            <span class="question-count">100 Questions</span>
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-subject="SAT">
+                        <div class="category-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <h3>SAT Prep</h3>
+                        <p>Critical Reading, Mathematics, and Writing Skills</p>
+                        <div class="category-stats">
+                            <span class="question-count">100 Questions</span>
+                            <span class="difficulty hard">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-subject="PHYSICS">
+                        <div class="category-icon">
+                            <i class="fas fa-atom"></i>
+                        </div>
+                        <h3>Physics</h3>
+                        <p>Mechanics, Electromagnetism, Thermodynamics, and Optics</p>
+                        <div class="category-stats">
+                            <span class="question-count">100 Questions</span>
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card pro-subject" data-subject="PRO">
+                        <div class="pro-badge">PRO</div>
+                        <div class="category-icon">
+                            <i class="fas fa-crown"></i>
+                        </div>
+                        <h3>Premium Content</h3>
+                        <p>Advanced topics and exclusive practice materials</p>
+                        <div class="category-stats">
+                            <span class="question-count">500+ Questions</span>
+                            <span class="difficulty hard">Premium</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary back-btn" onclick="goBack('streamScreen')">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Streams
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div id="proOverlay" class="overlay">
+        <div class="overlay-content blur-bg">
+            <div class="overlay-icon pro-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Premium Content</h2>
+            <p>Pay First to Access PRO Content</p>
+            <button class="btn btn-secondary" onclick="closeOverlay()">
+                <i class="fas fa-arrow-left"></i>
+                Go Back
+            </button>
+        </div>
+    </div>
+
+    <section id="yearScreen" class="screen">
+        <div class="container">
+            <div class="hero">
+                <div class="welcome-message">
+                    <h1>Select Exam Year</h1>
+                    <p id="yearSubjectName">Choose a year for your practice exam</p>
+                </div>
+                
+                <div class="year-categories">
+                    <div class="category-card year-card" data-year="2013">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>2013</h3>
+                        <p>20 Practice Questions</p>
+                        <div class="category-stats">
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card year-card" data-year="2014">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>2014</h3>
+                        <p>20 Practice Questions</p>
+                        <div class="category-stats">
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card year-card" data-year="2015">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>2015</h3>
+                        <p>20 Practice Questions</p>
+                        <div class="category-stats">
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card year-card" data-year="2016">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>2016</h3>
+                        <p>20 Practice Questions</p>
+                        <div class="category-stats">
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+
+                    <div class="category-card year-card" data-year="2017">
+                        <div class="category-icon">
+                            <i class="fas fa-calendar"></i>
+                        </div>
+                        <h3>2017</h3>
+                        <p>20 Practice Questions</p>
+                        <div class="category-stats">
+                            <span class="difficulty medium">60 Minutes</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary back-btn" onclick="goBack('subjectScreen')">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Subjects
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="examScreen" class="screen">
+        <div class="container">
+            <div class="exam-container">
+                <div class="main-timer-container">
+                    <div class="main-timer countdown">
+                        <i class="fas fa-hourglass-half"></i>
+                        <span class="timer-label">Time Left:</span>
+                        <span class="timer-display" id="timerDisplay">60:00</span>
+                    </div>
+                    <div class="quiz-progress-info">
+                        <span id="examSubject">Mathematics</span>
+                        <span class="progress-separator">•</span>
+                        <span id="examYear">2017</span>
+                    </div>
+                </div>
+
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar-fill" id="progressFill"></div>
+                    <div class="progress-text" id="progressText">Question 0 of 20 answered</div>
+                </div>
+
+                <div class="questions-scroll-container" id="questionsScrollContainer">
+                </div>
+
+                <div class="exam-footer">
+                    <button class="btn btn-secondary" onclick="exitExam()">
+                        <i class="fas fa-times"></i>
+                        Exit Exam
+                    </button>
+                    <button class="btn btn-primary" id="submitBtn" onclick="submitExam()">
+                        <i class="fas fa-check"></i>
+                        Submit Exam
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="completeScreen" class="screen">
+        <div class="container">
+            <div class="complete-container">
+                <div class="appreciation-badge" id="appreciationBadge">
+                    <i class="fas fa-trophy"></i>
+                    <h2 id="appreciationText">Excellent!</h2>
+                </div>
+                <h1 id="scoreDisplay">Score: 18/20</h1>
+                <p class="complete-message" id="completeMessage">You answered 18 out of 20 questions correctly!</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-label">Score Percentage</div>
+                        <div class="stat-value" id="percentageScore">90%</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-label">Time Spent</div>
+                        <div class="stat-value" id="totalTime">45:30</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-label">Correct Answers</div>
+                        <div class="stat-value" id="correctAnswers">18</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="stat-label">Wrong Answers</div>
+                        <div class="stat-value" id="wrongAnswers">2</div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" onclick="goBack('subjectScreen')">
+                    <i class="fas fa-redo"></i>
+                    Practice Another Subject
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="settingsScreen" class="screen">
+        <div class="container">
+            <div class="settings-container">
+                <h1><i class="fas fa-cog"></i> Settings</h1>
+                
+                <div class="settings-card">
+                    <h2>Profile Settings</h2>
+                    
+                    <div class="profile-image-section">
+                        <div class="profile-image-wrapper">
+                            <img src="" id="profileImagePreview" class="profile-image" alt="Profile">
+                            <label for="profileImageInput" class="profile-image-upload">
+                                <i class="fas fa-camera"></i>
+                            </label>
+                            <input type="file" id="profileImageInput" accept="image/*" style="display: none;">
+                        </div>
+                    </div>
+
+                    <form id="settingsForm">
+                        <div class="form-group">
+                            <label for="settingsFirstName">
+                                <i class="fas fa-user"></i>
+                                First Name
+                            </label>
+                            <input type="text" id="settingsFirstName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsPhoneNumber">
+                                <i class="fas fa-phone"></i>
+                                Phone Number
+                            </label>
+                            <input type="tel" id="settingsPhoneNumber" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="settingsSchoolName">
+                                <i class="fas fa-school"></i>
+                                School Name
+                            </label>
+                            <input type="text" id="settingsSchoolName" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Save Changes
+                        </button>
+                    </form>
+                </div>
+
+                <button class="btn btn-secondary back-btn" onclick="goBack('streamScreen')">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="historyScreen" class="screen">
+        <div class="container">
+            <div class="history-container">
+                <h1><i class="fas fa-history"></i> Exam History</h1>
+                <div id="historyList" class="history-list">
+                </div>
+                <button class="btn btn-secondary back-btn" onclick="goBack('streamScreen')">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="analyticsScreen" class="screen">
+        <div class="container">
+            <div class="analytics-container">
+                <h1><i class="fas fa-chart-line"></i> Performance Analytics</h1>
+                
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="analytics-label">Total Exams Taken</div>
+                        <div class="analytics-value" id="totalExams">0</div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="analytics-label">Average Score</div>
+                        <div class="analytics-value" id="averageScore">0%</div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <div class="analytics-label">Best Score</div>
+                        <div class="analytics-value" id="bestScore">0%</div>
+                    </div>
+                    <div class="analytics-card">
+                        <div class="analytics-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="analytics-label">Current Streak</div>
+                        <div class="analytics-value" id="currentStreak">0 days</div>
+                    </div>
+                </div>
+
+                <div class="subject-performance">
+                    <h2>Subject Performance</h2>
+                    <div id="subjectPerformanceList" class="subject-performance-list">
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary back-btn" onclick="goBack('streamScreen')">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Home
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="questionBank.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
